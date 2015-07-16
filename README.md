@@ -21,7 +21,7 @@ Download OSM data, e.g. nightly extract from
 After you donwload the file , type in terminal :
         
             chmod +x run.sh
-
+        
         ./run.sh
         
 
