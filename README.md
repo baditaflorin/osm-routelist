@@ -18,24 +18,21 @@ Download OSM data, e.g. nightly extract from
      -z norway.osm.pbf -o norway.osm.pbf \
      http://download.geofabrik.de/osm/europe/norway.osm.pbf
 
+After you donwload the file , type in terminal :
+    chmod +x run.sh
+    ./run.sh
+
+Deprecated :
+
 Filter routes using
 [Osmosis](http://wiki.openstreetmap.org/wiki/Osmosis),
-but we\'re not interested in road networks:
+We are mostly interested in road networks:
 
-    osmosis --rb norway.osm.pbf \
-     --tf accept-relations type=route \
-     --tf reject-relations route=road \
-     --tf reject-relations route=junction \
-     --tf reject-relations route=detour \
-     --tf reject-relations route=power \
-     --tf reject-ways \
-     --tf reject-nodes \
-     --wx routes.osm
+    osmosis --rb bosnia_highway.osm.pbf --tf accept-relations type=route --tf --tf reject-relations route=junction --tf reject-relations route=detour  --tf reject-relations route=power --tf reject-ways --tf reject-nodes --wx routes.osm
 
 Apply the XSLT style sheet:
 
-    xsltproc --stringparam updated "`date -r routes.osm "+%Y-%m-%d"`" \
-     routeList.xsl routes.osm > public_html/index.html
+    xsltproc --stringparam updated "`date -r routes.osm "+%Y-%m-%d"`" routeList.xsl routes.osm > public_html/index.html
 
 The result can be seen at <http://www.vidargundersen.com/routes/>
 
