@@ -75,6 +75,7 @@
           <xsl:sort select="tag[@k='operator']/@v"/>
           <xsl:sort select="tag[@k='ref']/@v" data-type="number"/>
           <xsl:sort select="tag[@k='name']/@v"/>
+          <xsl:sort select="tag[@k='type']/@v"/>
         </xsl:apply-templates>
       </ul>
       <p id="response"></p>
