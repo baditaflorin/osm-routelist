@@ -3,7 +3,7 @@
 
 Script and XSLT style sheet used to produce a list of
 [relation routes](http://wiki.openstreetmap.org/wiki/Route)
-found on OpenStreetMap (OSM) in Norway.
+found on OpenStreetMap (OSM) .
 
 Microformatting indicates OSM keys:
 [ref] name, "loc_name", rt:(from-)(via-)to, #ref, nb:note, id:osm-id, *operator, /network
