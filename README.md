@@ -19,9 +19,8 @@ Download OSM data, e.g. nightly extract from
      http://download.geofabrik.de/osm/europe/norway.osm.pbf
 
 After you donwload the file , type in terminal :
-    chmod +x run.sh
-        
-    ./run.sh
+        chmod +x run.sh
+        ./run.sh
 
 Deprecated :
 
