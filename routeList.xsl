@@ -61,7 +61,7 @@
     </head>
     <body>
       <h1 id="header">
-        <a href="https://wiki.openstreetmap.org/wiki/Relation">Relasjoner</a>
+        <a href="https://wiki.openstreetmap.org/wiki/Relation">Road Relation</a>
         <xsl:text> med type=</xsl:text>
         <xsl:value-of select="relation[position()=1]/tag[@k='type']/@v"/>
         <xsl:text> på </xsl:text>
@@ -75,17 +75,18 @@
           <xsl:sort select="tag[@k='operator']/@v"/>
           <xsl:sort select="tag[@k='ref']/@v" data-type="number"/>
           <xsl:sort select="tag[@k='name']/@v"/>
+          <xsl:sort select="tag[@k='type']/@"/>
         </xsl:apply-templates>
       </ul>
       <p id="response"></p>
       <address>
-        <xsl:text>Oppdatert </xsl:text>
+        <xsl:text>Updated </xsl:text>
         <xsl:value-of select="$updated"/>
-        <xsl:text> fra </xsl:text>
+        <xsl:text> from </xsl:text>
         <a href="http://download.geofabrik.de/europe/norway.html">Geofabrik OpenStreetMap uttrekk</a>
-        <xsl:text> med </xsl:text>
+        <xsl:text> with </xsl:text>
         <a href="https://github.com/vibrog/osm-routelist"
-           >kode publisert på GitHub</a>
+           >Code published on GitHub</a>
         <br/>
         <xsl:text>Kartdata © </xsl:text>
         <a href="https://www.openstreetmap.org/copyright">OpenStreetMap bidragsytere</a>
@@ -103,7 +104,7 @@ $('a[href*="localhost"]').click(function(event){
     msg=xmlhttp.responseText;
   }
   catch(err) {
-    msg="Feil: Editoren svarte ikke.";
+    msg="Error: The editor did not answer.";
   }
   $("#response").text(msg);
   $("#response").fadeIn(500).delay(2000).fadeOut(500);
@@ -116,7 +117,7 @@ $('a[href*="localhost"]').click(function(event){
 <xsl:template match="relation">
   <li class="{tag[@k='route']/@v}">
     <a href="https://www.openstreetmap.org/relation/{@id}"
-       title="Beskrivelse og kart for {@id}">
+       title="Description and map {@id}">
       <xsl:if test="tag[@k='ref']
                     and (
                       tag[@k='name']
@@ -124,6 +125,7 @@ $('a[href*="localhost"]').click(function(event){
                       or tag[@k='to']
                     )
                     and (
+                      tag[@k='route']/@v='road' or
                       tag[@k='route']/@v='bus' or
                       tag[@k='route']/@v='tram' or
                       tag[@k='route']/@v='subway' or
