@@ -6,6 +6,6 @@ read osmfile
 echo "Setting 8 GB RAM for this task to the server"
 set JAVACMD_OPTIONS= -Xmx8G
 # execute osmosis command
-osmosis --rbf $osmfile.osm.pbf --tf accept-relations type=route --tf --tf reject-relations route=junction --tf reject-relations route=detour  --tf reject-relations route=power --tf reject-ways --tf reject-nodes --wx routes.osm
+osmosis --rbf $osmfile.osm.pbf --tf accept-relations type=route --tf reject-relations route=junction --tf reject-relations route=detour  --tf reject-relations route=power --tf reject-ways --tf reject-nodes --wx routes.osm
 xsltproc --stringparam updated "`date -r routes.osm "+%Y-%m-%d"`"  routeList.xsl routes.osm > public_html/index.html
 echo -e "\vThis \vscript \vis \vdone \v \vCluj \vMap Analyst Team" 
